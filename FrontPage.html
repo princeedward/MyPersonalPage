@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Edward Cui | Robotics</title>
+<style type="text/css">
+@font-face {
+	font-family: myriad;
+	font-style:  normal;
+    font-weight: 400;
+	src:url(souce/myriadproblackit.ttf)
+}
+html, 
+body { 
+	height: 100%; 
+	margin:0;
+}
+#backGround{
+	width:100%;
+	height:100%;
+	background-image:url(souce/BackGrd.jpg);
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+}
+#words4Me{
+	font-family:myriad,"Myriad Pro", "Myriad Pro Cond", "Myriad Pro Light";
+	font-size:56px;
+	color:#FFFFFF;
+	position:absolute;
+	left:50%;
+	top:50%;
+	width:1000px;
+	height:200px;
+	margin-left:-300px;
+	margin-top:-50px;
+}
+#mainBar{
+	width:90%;
+	height:100%;
+	margin-left:0px;
+	margin-top:0px;
+	background:#FFFFFF;
+	position:absolute;
+	top:0px;
+	z-index:10;
+	overflow:hidden;
+}
+#mainTop{
+	width:100%;
+	/*background:#FFFF00;*/
+	height:200px;
+	position:absolute;
+	box-shadow:0px 3px 3px #BBBBBB;
+    -moz-box-shadow:0px 3px 3px #BBBBBB;
+    -webkit-box-shadow:0px 3px 3px #BBBBBB;
+}
+#mainBottom{
+	width:100%;
+	background-image:url(souce/bg-light.jpg);
+	position:absolute;
+	height:100%;
+	top:203px;
+	margin:0px;
+}
+#myName{
+	position:relative;
+	font-family:Verdana, Geneva, sans-serif;
+	color:#000000;
+	font-size:45px;
+	left:10%;
+	top:25%;
+	cursor:pointer;
+}
+#buttonBar{
+	position:absolute;
+	float:right;
+	bottom:15px;
+	right:0px;
+	/*background:#00FFFF;*/
+	height:35%;
+	width:50%;
+}
+.topButton{
+	float:left;
+	/*background:#666666;*/
+	width:18%;
+	height:55px;
+	margin-right:5px;
+	text-align:center;
+	line-height:55px;
+	font-family: "Myriad Pro Cond", "Myriad Pro";
+	font-size:22px;
+	font-weight:100;
+}
+.mOn{
+	color:#0CF;
+}
+.mOver{
+	background:#CC3333;
+	height:90px;
+	color:#FFFFFF;
+	float:left;
+	width:18%;
+	margin-right:5px;
+	padding-top:10px;
+	text-align:center;
+	line-height:30px;
+	font-family: "Myriad Pro Cond", "Myriad Pro";
+	font-size:24px;
+	box-shadow:3px 0px 3px #999999;
+    -moz-box-shadow:3px 0px 3px #999999;
+    -webkit-box-shadow:3px 0px 3px #999999;
+	cursor:pointer;
+}
+#scroller{
+	width:90%;
+	height:200px;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="souce/scrollbar.css">
+<script language="javascript" src="jquery-1.7.2.js"></script>
+<script language="javascript" src="iscroll.js"></script>
+<script language="javascript">
+var wSection = 1;
+var myScroll;
+$(document).ready(function(e) {
+	//windowwidth = $("body").width();
+//	$("#mainBar").css("left",-windowwidth+"px");
+//	$("#words4Me").fadeOut(0);
+//    $("#words4Me").fadeIn(2000);
+//	$("#mainBar").delay(2000).animate({left:"0px"},1000);
+//	$("#words4Me").fadeOut(1000);
+	//  scroll bar
+	myScroll = new iScroll('mainBottom');
+	//
+	$(".topButton").bind("mouseenter",function(){
+		$(this).attr("class","mOver");
+	}).bind("mouseleave",function(){
+		$(this).attr("class","topButton");
+	});
+	$(".topButton").bind("click",function(){
+		$(".topButton").removeClass("mOn");
+		cID = $(this).attr("id");
+		if(cID == "mHome"){
+			wSection = 1;
+		}
+		if(cID == "mAbout"){
+			wSection = 2;
+		}
+		if(cID == "mResume"){
+			wSection = 3;
+		}
+		if(cID == "mPortfolio"){
+			wSection = 4;
+		}
+		if(cID == "mContact"){
+			wSection = 5;
+		}
+		//$(this).addClass("mOn");
+	});
+	$("#mHome").bind("mouseenter",function(){
+		$(this).html("What<br /> I'm thinking");
+	}).bind("mouseleave",function(){
+		$(this).html("Home");
+		if(wSection == 1){
+			$(this).addClass("mOn");
+		}
+	});
+	$("#mAbout").bind("mouseenter",function(){
+		$(this).html("Who<br /> I am");
+	}).bind("mouseleave",function(){
+		$(this).html("About");
+		if(wSection == 2){
+			$(this).addClass("mOn");
+		}
+	});
+	$("#mResume").bind("mouseenter",function(){
+		$(this).html("What<br /> I've done");
+	}).bind("mouseleave",function(){
+		$(this).html("Resume");
+		if(wSection == 3){
+			$(this).addClass("mOn");
+		}
+	});
+	$("#mPortfolio").bind("mouseenter",function(){
+		$(this).html("What<br /> I'm doing");
+	}).bind("mouseleave",function(){
+		$(this).html("Portfolio");
+		if(wSection == 4){
+			$(this).addClass("mOn");
+		}
+	});
+	$("#mContact").bind("mouseenter",function(){
+		$(this).html("How<br /> to reach me");
+	}).bind("mouseleave",function(){
+		$(this).html("Contact");
+		if(wSection == 5){
+			$(this).addClass("mOn");
+		}
+	});
+});
+</script>
+</head>
+<body id="bOdy">
+<div id="backGround">
+	<div id="words4Me">
+    Here Begins Everything!
+    </div>
+	<div id="titleBar">
+	</div>
+    <div id="mainBar">
+    	<div id="mainTop">
+        	<div id="myName">Edward Cui</div>
+            <div id="search"></div>
+            <div id="buttonBar">
+            	<div class="topButton mOn" id="mHome">Home</div>
+                <div class="topButton" id="mAbout">About</div>
+                <div class="topButton" id="mResume">Resume</div>
+                <div class="topButton" id="mPortfolio">Portfolio</div>
+                <div class="topButton" id="mContact">Contact</div>
+            </div>
+        </div>
+        <div id="mainBottom">
+          <div id="scroller">
+          </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
